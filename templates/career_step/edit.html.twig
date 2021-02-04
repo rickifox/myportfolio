@@ -1,0 +1,13 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Edit CareerStep{% endblock %}
+
+{% block body %}
+    <h1>Edit CareerStep</h1>
+
+    {{ include('career_step/_form.html.twig', {'button_label': 'Update'}) }}
+
+    <a href="{{ path('career_step_index') }}">back to list</a>
+
+    {{ include('career_step/_delete_form.html.twig') }}
+{% endblock %}

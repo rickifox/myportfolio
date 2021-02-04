@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}CareerStep{% endblock %}
+
+{% block body %}
+    <h1>CareerStep</h1>
+
+    <table class="table">
+        <tbody>
+            <tr>
+                <th>Id</th>
+                <td>{{ career_step.id }}</td>
+            </tr>
+            <tr>
+                <th>Position</th>
+                <td>{{ career_step.position }}</td>
+            </tr>
+            <tr>
+                <th>Company</th>
+                <td>{{ career_step.company }}</td>
+            </tr>
+            <tr>
+                <th>StartDate</th>
+                <td>{{ career_step.StartDate ? career_step.StartDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>EndDate</th>
+                <td>{{ career_step.EndDate ? career_step.EndDate|date('Y-m-d') : '' }}</td>
+            </tr>
+            <tr>
+                <th>Description</th>
+                <td>{{ career_step.description }}</td>
+            </tr>
+        </tbody>
+    </table>
+
+    <a href="{{ path('career_step_index') }}">back to list</a>
+
+    <a href="{{ path('career_step_edit', {'id': career_step.id}) }}">edit</a>
+
+    {{ include('career_step/_delete_form.html.twig') }}
+{% endblock %}

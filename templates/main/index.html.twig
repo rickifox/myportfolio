@@ -1,0 +1,42 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<main>
+   <h1>Web & Mobile Web Developer</h1>
+   <ul>
+      <li>
+         <h2>About Me</h2>
+         <article>
+            <p>Hi! Welcome to my website.
+               My name is Ricardo, 23 years old, portuguese living in France.
+               I recently turned into a developer, so as you will be able to see, I have a quiet diverse career.
+               I've studied Sciences, Languages, Economics even a bit of Law, whilst cashier, waiter and finally receptionist.
+               All that until I finally took some time out to think and here I am now,
+               A brand new developer, at your service.
+            </p>
+            <img src="./assets/images/HelloWorld.jpg" alt="Hello World in IDE"/>
+         </article>
+      </li>
+
+      <li>
+         <h2>Skills</h2>
+         <article>
+            <h3>Hard-Skills</h3>
+            <section>
+               <h3>Front-End</h3>
+               <ul>
+                  {% for frontskill in frontskills %}
+                     <li>{{ frontskill.name }}</li>
+                  {% endfor %}}
+               </ul>
+               <ul>
+                  {% for frontskill in frontskills %}
+                     <li><img src="./assets/images/{{ frontskill.image.url }}" alt="{{ frontskill.name }} logo"></li>
+                  {% endfor %}}
+               </ul>
+            </section>
+         </article>
+      </li>
+   </ul>
+</main>
+{% endblock %}
