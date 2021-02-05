@@ -87,13 +87,16 @@ class SkillController extends AbstractController
     public function delete(Request $request, Skill $skill): Response
     {
         if ($this->isCsrfTokenValid('delete'.$skill->getId(), $request->request->get('_token'))) {
-            $filesystem = new filesystem();
-            $filePath = $skill->getImage()->getUrl();
-            var_dump($filesystem);die();
+            $filesystem = new Filesystem();
+            $filePath = './uploads/'.$skill->getImage()->getUrl();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($skill);
             $entityManager->flush();
-            $filesystem->remove($filePath);
+            try {
+                $filesystem->remove([$filePath]);
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while removing your image at ".$exception->getPath();
+            }
         }
 
         return $this->redirectToRoute('skill_index');

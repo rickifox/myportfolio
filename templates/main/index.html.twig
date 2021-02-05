@@ -23,7 +23,7 @@
          <article>
             <h3>Hard-Skills</h3>
             <section>
-               <h3>Front-End</h3>
+               <h4>Front-End</h4>
                <ul>
                   {% for frontskill in frontskills %}
                      <li>{{ frontskill.name }}</li>
@@ -31,10 +31,45 @@
                </ul>
                <ul>
                   {% for frontskill in frontskills %}
-                     <li><img src="./assets/images/{{ frontskill.image.url }}" alt="{{ frontskill.name }} logo"></li>
+                     <li><img src="{{ vich_uploader_asset(frontskill.image, 'imageFile') }}" alt="{{ frontskill.name }} logo"></li>
                   {% endfor %}}
                </ul>
             </section>
+
+            <section>
+               <h4>Back-End</h4>
+               <ul>
+                  {% for backskill in backskills %}
+                     <li>{{ backskill.name }}</li>
+                  {% endfor %}}
+               </ul>
+               <ul>
+                  {% for backskill in backskills %}
+                     <li><img src="{{ vich_uploader_asset(backskill.image, 'imageFile') }}" alt="{{ backskill.name }} logo"></li>
+                  {% endfor %}}
+               </ul>
+            </section>
+
+            <section>
+               <h4>Diverse</h4>
+               <ul>
+                  {% for otherskill in otherskills %}
+                     <li>{{ otherskill.name }}</li>
+                  {% endfor %}}
+               </ul>
+               <ul>
+                  {% for otherskill in otherskills %}
+                     <li><img src="{{ vich_uploader_asset(otherskill.image, 'imageFile') }}" alt="{{ otherskill.name }} logo"></li>
+                  {% endfor %}}
+               </ul>
+            </section>
+         </article>
+
+         <article>
+            <h3>Soft Skills</h3>
+            {% for softskill in softskills %}
+               <li>{{ softskill.name }}</li>
+            {% endfor %}}
          </article>
       </li>
    </ul>

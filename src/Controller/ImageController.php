@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @Route("/image")
@@ -84,11 +86,18 @@ class ImageController extends AbstractController
     public function delete(Request $request, Image $image): Response
     {
         if ($this->isCsrfTokenValid('delete'.$image->getId(), $request->request->get('_token'))) {
+            $filesystem = new Filesystem();
+            $filePath = './uploads/'.$image->getUrl();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($image);
             $entityManager->flush();
+            try {
+                $filesystem->remove([$filePath]);
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while removing your image at ".$exception->getPath();
+            }
         }
-        
+
         return $this->redirectToRoute('image_index');
     }
 }
