@@ -14,8 +14,13 @@ class SocialType extends AbstractType
         $builder
             ->add('name')
             ->add('url')
-            ->add('image')
-            ->add('section')
+            ->add('image', null, [
+                'empty_data' => null,
+                'choice_label' => 'url',
+                ])
+            ->add('section', null, [
+                    'choice_label' => 'name',
+                ])
         ;
     }
 

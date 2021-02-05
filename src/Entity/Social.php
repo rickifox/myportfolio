@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\SocialRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=SocialRepository::class)
@@ -34,7 +35,7 @@ class Social
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="socials")
+     * @ORM\ManyToOne(targetEntity=Section::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $section;

@@ -1,6 +1,7 @@
 {% extends 'base.html.twig' %}
 
 {% block body %}
+<header>Ricardo Da Silva Pereira</header>
 <main>
    <h1>Web & Mobile Web Developer</h1>
    <ul>
@@ -27,12 +28,12 @@
                <ul>
                   {% for frontskill in frontskills %}
                      <li>{{ frontskill.name }}</li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
                <ul>
                   {% for frontskill in frontskills %}
                      <li><img src="{{ vich_uploader_asset(frontskill.image, 'imageFile') }}" alt="{{ frontskill.name }} logo"></li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
             </section>
 
@@ -41,12 +42,12 @@
                <ul>
                   {% for backskill in backskills %}
                      <li>{{ backskill.name }}</li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
                <ul>
                   {% for backskill in backskills %}
                      <li><img src="{{ vich_uploader_asset(backskill.image, 'imageFile') }}" alt="{{ backskill.name }} logo"></li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
             </section>
 
@@ -55,21 +56,102 @@
                <ul>
                   {% for otherskill in otherskills %}
                      <li>{{ otherskill.name }}</li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
                <ul>
                   {% for otherskill in otherskills %}
                      <li><img src="{{ vich_uploader_asset(otherskill.image, 'imageFile') }}" alt="{{ otherskill.name }} logo"></li>
-                  {% endfor %}}
+                  {% endfor %}
                </ul>
             </section>
          </article>
 
          <article>
             <h3>Soft Skills</h3>
-            {% for softskill in softskills %}
-               <li>{{ softskill.name }}</li>
-            {% endfor %}}
+            <ul>
+               {% for softskill in softskills %}
+                  <li>{{ softskill.name }}</li>
+               {% endfor %}
+            </ul>
+            <ul>
+               {% for softskill in softskills %}
+                     <li><img src="{{ vich_uploader_asset(softskill.image, 'imageFile') }}" alt="{{ softskill.name }}"></li>
+                  {% endfor %}
+            </ul>
+         </article>
+      </li>
+
+      <li>
+         <h2>Recent Work</h2>
+         <p>Under Maintenance, please come back later</p>
+      </li>
+
+      <li>
+         <h2>Career Path</h2>
+         <article>
+            <ul>
+               {% for careerstep in careersteps %}
+                  <li>
+                     <img src="{{ vich_uploader_asset(careerstep.image, 'imageFile') }}" alt="{{ careerstep.company }} logo">
+                     <h3>{{ careerstep.position }}</h3>
+                     <h4>{{ careerstep.company }}</h4>
+                     <h4>{{ careerstep.StartDate ? careerstep.StartDate|date('m-d-Y') : '' }} - {{ careerstep.EndDate ? careerstep.EndDate|date('m-d-Y') : '' }}</h4>
+                     <p>{{ careerstep.description }}</p>
+                  </li>
+               {% endfor %}
+            </ul>
+         </article>
+      </li>
+
+      <li>
+         <h2>Educational Path</h2>
+         <article>
+            <ul>
+               {% for educationalstep in educationalsteps %}
+                  <li>
+                     <img src="{{ vich_uploader_asset(educationalstep.image, 'imageFile') }}" alt="{{ educationalstep.company }} logo">
+                     <h3>{{ educationalstep.position }}</h3>
+                     <h4>{{ educationalstep.company }}</h4>
+                     <h4>{{ educationalstep.StartDate ? educationalstep.StartDate|date('m-d-Y') : ''  }} - {{  educationalstep.EndDate ? educationalstep.EndDate|date('m-d-Y') : ''  }}</h4>
+                     <p>{{ educationalstep.description }}</p>
+                  </li>
+               {% endfor %}
+            </ul>
+         </article>
+      </li>
+
+      <li>
+         <h2>Educational Path</h2>
+         <article>
+            <ul>
+               {% for educationalstep in educationalsteps %}
+                  <li>
+                     <img src="{{ vich_uploader_asset(educationalstep.image, 'imageFile') }}" alt="{{ educationalstep.company }} logo">
+                     <h3>{{ educationalstep.position }}</h3>
+                     <h4>{{ educationalstep.company }}</h4>
+                     <h4>{{ educationalstep.StartDate ? educationalstep.StartDate|date('m-d-Y') : ''  }} - {{  educationalstep.EndDate ? educationalstep.EndDate|date('m-d-Y') : ''  }}</h4>
+                     <p>{{ educationalstep.description }}</p>
+                  </li>
+               {% endfor %}
+            </ul>
+         </article>
+      </li>
+
+      <li>
+         <h2>Contact Me</h2>
+         <article>
+            <h3>You can find me on</h3>
+            <ul>
+               {% for contact in contacts%}
+                  <li>
+                     <a href="https://{{ contact.url }}" target="_blank">
+                        <img src="{{ vich_uploader_asset(contact.image, 'imageFile') }}" alt="{{ contact.name }} logo">
+                     </a>
+                  </li>
+               {% endfor %}
+            </ul>
+            <h3>or send me an email at</h3>
+            <p>ricardo.<!-- it's my firstname ;-) -->pereira.<!-- my very last name ^^ -->developpeur<!-- my job! -->@<!-- some email provider -->gmail<!-- ans the main domain name!! -->.com</p>
          </article>
       </li>
    </ul>

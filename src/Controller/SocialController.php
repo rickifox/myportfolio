@@ -9,6 +9,8 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
  * @Route("/social")
@@ -84,9 +86,16 @@ class SocialController extends AbstractController
     public function delete(Request $request, Social $social): Response
     {
         if ($this->isCsrfTokenValid('delete'.$social->getId(), $request->request->get('_token'))) {
+            $filesystem = new Filesystem();
+            $filePath = './uploads/'.$social->getImage()->getUrl();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($social);
             $entityManager->flush();
+            try {
+                $filesystem->remove([$filePath]);
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while removing your image at ".$exception->getPath();
+            }
         }
 
         return $this->redirectToRoute('social_index');

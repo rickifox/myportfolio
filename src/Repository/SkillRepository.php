@@ -19,6 +19,20 @@ class SkillRepository extends ServiceEntityRepository
         parent::__construct($registry, Skill::class);
     }
 
+    public function findBySectionName(string $sectionName): ?array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT skill, section
+            FROM App\Entity\Skill skill
+            INNER JOIN skill.section section
+            WHERE section.name = :name'
+        )->setParameter('name', $sectionName);
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return Skill[] Returns an array of Skill objects
     //  */

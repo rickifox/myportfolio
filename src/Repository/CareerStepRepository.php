@@ -19,6 +19,20 @@ class CareerStepRepository extends ServiceEntityRepository
         parent::__construct($registry, CareerStep::class);
     }
 
+    public function findBySectionName(string $sectionName): ?array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT career_step, section
+            FROM App\Entity\CareerStep career_step
+            INNER JOIN career_step.section section
+            WHERE section.name = :name'
+        )->setParameter('name', $sectionName);
+
+        return $query->getResult();
+    }
+
     // /**
     //  * @return CareerStep[] Returns an array of CareerStep objects
     //  */

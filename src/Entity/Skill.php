@@ -29,7 +29,7 @@ class Skill
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="skills")
+     * @ORM\ManyToOne(targetEntity=Section::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $section;

@@ -19,6 +19,19 @@ class SocialRepository extends ServiceEntityRepository
         parent::__construct($registry, Social::class);
     }
 
+    public function findBySectionName(string $sectionName): ?array
+    {
+        $entityManager = $this->getEntityManager();
+
+        $query = $entityManager->createQuery(
+            'SELECT social, section
+            FROM App\Entity\Social social
+            INNER JOIN social.section section
+            WHERE section.name = :name'
+        )->setParameter('name', $sectionName);
+
+        return $query->getResult();
+    }
     // /**
     //  * @return Social[] Returns an array of Social objects
     //  */

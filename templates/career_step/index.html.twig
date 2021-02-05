@@ -23,9 +23,10 @@
                 <td>{{ career_step.id }}</td>
                 <td>{{ career_step.position }}</td>
                 <td>{{ career_step.company }}</td>
-                <td>{{ career_step.StartDate ? career_step.StartDate|date('Y-m-d') : '' }}</td>
-                <td>{{ career_step.EndDate ? career_step.EndDate|date('Y-m-d') : '' }}</td>
+                <td>{{ career_step.StartDate ? career_step.StartDate|date('d-m-Y') : '' }}</td>
+                <td>{{ career_step.EndDate ? career_step.EndDate|date('d-m-Y') : '' }}</td>
                 <td>{{ career_step.description }}</td>
+                <td><img src="{{ vich_uploader_asset(career_step.image, 'imageFile') }}"></td>
                 <td>
                     <a href="{{ path('career_step_show', {'id': career_step.id}) }}">show</a>
                     <a href="{{ path('career_step_edit', {'id': career_step.id}) }}">edit</a>

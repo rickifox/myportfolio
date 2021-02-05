@@ -17,8 +17,13 @@ class CareerStepType extends AbstractType
             ->add('StartDate')
             ->add('EndDate')
             ->add('description')
-            ->add('image')
-            ->add('section')
+            ->add('image', null, [
+                'empty_data' => null,
+                'choice_label' => 'url',
+                ])
+                ->add('section', null, [
+                    'choice_label' => 'name',
+                ])
         ;
     }
 

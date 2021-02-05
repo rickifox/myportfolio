@@ -4,6 +4,7 @@ namespace App\Entity;
 
 use App\Repository\CareerStepRepository;
 use Doctrine\ORM\Mapping as ORM;
+use Symfony\Component\HttpFoundation\File\File;
 
 /**
  * @ORM\Entity(repositoryClass=CareerStepRepository::class)
@@ -49,7 +50,7 @@ class CareerStep
     private $image;
 
     /**
-     * @ORM\ManyToOne(targetEntity=Section::class, inversedBy="careerSteps")
+     * @ORM\ManyToOne(targetEntity=Section::class)
      * @ORM\JoinColumn(nullable=false)
      */
     private $section;

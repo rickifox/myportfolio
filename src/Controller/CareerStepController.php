@@ -9,9 +9,11 @@ use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Annotation\Route;
+use Symfony\Component\Filesystem\Exception\IOExceptionInterface;
+use Symfony\Component\Filesystem\Filesystem;
 
 /**
- * @Route("/career/step")
+ * @Route("/careerstep")
  */
 class CareerStepController extends AbstractController
 {
@@ -84,9 +86,16 @@ class CareerStepController extends AbstractController
     public function delete(Request $request, CareerStep $careerStep): Response
     {
         if ($this->isCsrfTokenValid('delete'.$careerStep->getId(), $request->request->get('_token'))) {
+            $filesystem = new Filesystem();
+            $filePath = './uploads/'.$careerStep->getImage()->getUrl();
             $entityManager = $this->getDoctrine()->getManager();
             $entityManager->remove($careerStep);
             $entityManager->flush();
+            try {
+                $filesystem->remove([$filePath]);
+            } catch (IOExceptionInterface $exception) {
+                echo "An error occurred while removing your image at ".$exception->getPath();
+            }
         }
 
         return $this->redirectToRoute('career_step_index');
