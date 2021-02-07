@@ -1,102 +1,107 @@
 {% extends 'base.html.twig' %}
 
+{% block stylesheets %}<link href="/assets/css/main.css" rel="stylesheet">{% endblock %}
+
 {% block body %}
-<header>Ricardo Da Silva Pereira</header>
+<header>Ricardo Da Silva Pereira<br>Web & Mobile Web Developer</header>
 <main>
-   <h1>Web & Mobile Web Developer</h1>
    <ul>
       <li>
-         <h2>About Me</h2>
-         <article>
-            <p>Hi! Welcome to my website.
-               My name is Ricardo, 23 years old, portuguese living in France.
-               I recently turned into a developer, so as you will be able to see, I have a quiet diverse career.
-               I've studied Sciences, Languages, Economics even a bit of Law, whilst cashier, waiter and finally receptionist.
-               All that until I finally took some time out to think and here I am now,
-               A brand new developer, at your service.
+         <h1 id="aboutmetoggler">About Me</h1>
+         <article id='about-me-section'>
+            <p id="presentation">Hi! Welcome to my website.<br>
+               My name is Ricardo, 23 years old, portuguese living in France.<br>
+               I recently turned into a developer, so as you will be able to see, I have a quiet diverse career.<br>
+               As student, I studied Sciences, Languages, Economics even a bit of Law.<br>
+               In parallèle, I was also a cashier, waiter and finally receptionist.<br>
+               All that until I finally took some time out to think and here I am now,<br>
+               A brand new developer! <br>
+               Entreprising, optimistic, curious, creative and at your service.
             </p>
-            <img src="./assets/images/HelloWorld.jpg" alt="Hello World in IDE"/>
+            <img id="hello-world" src="./assets/images/HelloWorld.jpg" alt="Hello World in IDE"/>
          </article>
       </li>
 
       <li>
-         <h2>Skills</h2>
-         <article>
-            <h3>Hard-Skills</h3>
-            <section>
-               <h4>Front-End</h4>
-               <ul>
+         <h1 id="skills-toggler">Skills</h1>
+         <article class="skills-section">
+            <h2 id="hard-skills">Hard-Skills</h2>
+            <section class="column">
+               <h3>Front-End</h3>
+               <ul class="skills-list">
                   {% for frontskill in frontskills %}
-                     <li>{{ frontskill.name }}</li>
+                     <li class="skill">{{ frontskill.name }}</li>
                   {% endfor %}
                </ul>
-               <ul>
+               <ul class="skills-list">
                   {% for frontskill in frontskills %}
-                     <li><img src="{{ vich_uploader_asset(frontskill.image, 'imageFile') }}" alt="{{ frontskill.name }} logo"></li>
+                     <li class="skill-illustration"><img src="{{ vich_uploader_asset(frontskill.image, 'imageFile') }}" alt="{{ frontskill.name }} logo"></li>
                   {% endfor %}
                </ul>
             </section>
 
-            <section>
-               <h4>Back-End</h4>
-               <ul>
+            <section class="column">
+               <h3>Back-End</h3>
+               <ul class="skills-list">
                   {% for backskill in backskills %}
-                     <li>{{ backskill.name }}</li>
+                     <li class="skill">{{ backskill.name }}</li>
                   {% endfor %}
                </ul>
-               <ul>
+               <ul class="skills-list">
                   {% for backskill in backskills %}
-                     <li><img src="{{ vich_uploader_asset(backskill.image, 'imageFile') }}" alt="{{ backskill.name }} logo"></li>
+                     <li class="skill-illustration"><img src="{{ vich_uploader_asset(backskill.image, 'imageFile') }}" alt="{{ backskill.name }} logo"></li>
                   {% endfor %}
                </ul>
             </section>
 
-            <section>
-               <h4>Diverse</h4>
-               <ul>
+            <section class="column">
+               <h3>Diverse</h3>
+               <ul class="skills-list">
                   {% for otherskill in otherskills %}
-                     <li>{{ otherskill.name }}</li>
+                     <li class="skill">{{ otherskill.name }}</li>
                   {% endfor %}
                </ul>
-               <ul>
+               <ul class="skills-list">
                   {% for otherskill in otherskills %}
-                     <li><img src="{{ vich_uploader_asset(otherskill.image, 'imageFile') }}" alt="{{ otherskill.name }} logo"></li>
+                     <li class="skill-illustration"><img src="{{ vich_uploader_asset(otherskill.image, 'imageFile') }}" alt="{{ otherskill.name }} logo"></li>
                   {% endfor %}
                </ul>
             </section>
          </article>
 
-         <article>
-            <h3>Soft Skills</h3>
-            <ul>
+         <article class="skills-section">
+            <h2 id="soft-skills">Soft Skills</h2>
+            <ul id="soft-skills-list">
                {% for softskill in softskills %}
                   <li>{{ softskill.name }}</li>
                {% endfor %}
             </ul>
-            <ul>
+            <ul id="soft-skills-illustrations">
                {% for softskill in softskills %}
-                     <li><img src="{{ vich_uploader_asset(softskill.image, 'imageFile') }}" alt="{{ softskill.name }}"></li>
-                  {% endfor %}
+                  <li class="skill-illustration"><img src="{{ vich_uploader_asset(softskill.image, 'imageFile') }}" alt="{{ softskill.name }}"></li>
+               {% endfor %}
             </ul>
          </article>
       </li>
 
       <li>
-         <h2>Recent Work</h2>
-         <p>Under Maintenance, please come back later</p>
+         <h1 id="recent-work-toggler">Recent Work</h1>
+         <p id="maintenance">Under Maintenance, please come back later.</p>
       </li>
 
       <li>
-         <h2>Career Path</h2>
+         <h1 id="career-path-toggler">Career Path</h1>
          <article>
-            <ul>
+            <ul id="career-path-section">
                {% for careerstep in careersteps %}
                   <li>
-                     <img src="{{ vich_uploader_asset(careerstep.image, 'imageFile') }}" alt="{{ careerstep.company }} logo">
-                     <h3>{{ careerstep.position }}</h3>
-                     <h4>{{ careerstep.company }}</h4>
-                     <h4>{{ careerstep.StartDate ? careerstep.StartDate|date('m-d-Y') : '' }} - {{ careerstep.EndDate ? careerstep.EndDate|date('m-d-Y') : '' }}</h4>
-                     <p>{{ careerstep.description }}</p>
+                     <img class="career-logos" src="{{ vich_uploader_asset(careerstep.image, 'imageFile') }}" alt="{{ careerstep.company }} logo">
+                     <div class="career-info">
+                        <h2>{{ careerstep.position }}</h2>
+                        <h3>{{ careerstep.company }}</h3>
+                        <h4>{{ careerstep.StartDate ? careerstep.StartDate|date('m-d-Y') : '' }} / {{ careerstep.EndDate ? careerstep.EndDate|date('m-d-Y') : '' }}</h3>
+                        <p>{{ careerstep.description }}</p>
+                     </div>
                   </li>
                {% endfor %}
             </ul>
@@ -104,16 +109,18 @@
       </li>
 
       <li>
-         <h2>Educational Path</h2>
+         <h1 id="educational-path-toggler">Educational Path</h1>
          <article>
-            <ul>
+            <ul id="educational-path-section">
                {% for educationalstep in educationalsteps %}
                   <li>
-                     <img src="{{ vich_uploader_asset(educationalstep.image, 'imageFile') }}" alt="{{ educationalstep.company }} logo">
-                     <h3>{{ educationalstep.position }}</h3>
-                     <h4>{{ educationalstep.company }}</h4>
-                     <h4>{{ educationalstep.StartDate ? educationalstep.StartDate|date('m-d-Y') : ''  }} - {{  educationalstep.EndDate ? educationalstep.EndDate|date('m-d-Y') : ''  }}</h4>
-                     <p>{{ educationalstep.description }}</p>
+                     <img class="career-logos" src="{{ vich_uploader_asset(educationalstep.image, 'imageFile') }}" alt="{{ educationalstep.company }} logo">
+                     <div class="career-info">
+                        <h2>{{ educationalstep.position }}</h2>
+                        <h3>{{ educationalstep.company }}</h3>
+                        <h4>{{ educationalstep.StartDate ? educationalstep.StartDate|date('m-d-Y') : ''  }} / {{  educationalstep.EndDate ? educationalstep.EndDate|date('m-d-Y') : ''  }}</h3>
+                        <p>{{ educationalstep.description }}</p>
+                     </div>
                   </li>
                {% endfor %}
             </ul>
@@ -121,39 +128,26 @@
       </li>
 
       <li>
-         <h2>Educational Path</h2>
-         <article>
-            <ul>
-               {% for educationalstep in educationalsteps %}
-                  <li>
-                     <img src="{{ vich_uploader_asset(educationalstep.image, 'imageFile') }}" alt="{{ educationalstep.company }} logo">
-                     <h3>{{ educationalstep.position }}</h3>
-                     <h4>{{ educationalstep.company }}</h4>
-                     <h4>{{ educationalstep.StartDate ? educationalstep.StartDate|date('m-d-Y') : ''  }} - {{  educationalstep.EndDate ? educationalstep.EndDate|date('m-d-Y') : ''  }}</h4>
-                     <p>{{ educationalstep.description }}</p>
-                  </li>
-               {% endfor %}
-            </ul>
-         </article>
-      </li>
-
-      <li>
-         <h2>Contact Me</h2>
-         <article>
-            <h3>You can find me on</h3>
-            <ul>
+         <h1>Contact Me</h1>
+         <article class="contact-section">
+            <h2>You can find me on</h2>
+            <ul id="social-medias">
                {% for contact in contacts%}
-                  <li>
+                  <li class="social-media">
                      <a href="https://{{ contact.url }}" target="_blank">
                         <img src="{{ vich_uploader_asset(contact.image, 'imageFile') }}" alt="{{ contact.name }} logo">
                      </a>
                   </li>
                {% endfor %}
             </ul>
-            <h3>or send me an email at</h3>
-            <p>ricardo.<!-- it's my firstname ;-) -->pereira.<!-- my very last name ^^ -->developpeur<!-- my job! -->@<!-- some email provider -->gmail<!-- ans the main domain name!! -->.com</p>
+            <h2>or send me an email at</h2>
+            <p id="gcontact">ricardo.<!-- it's my firstname ;-) -->pereira.<!-- my very last name ^^ -->developpeur<!-- my job! -->@<!-- some email provider -->gmail<!-- ans the main domain name!! -->.com</p>
          </article>
       </li>
    </ul>
 </main>
+
+{% block javascripts %}<script src="/assets/js/toggler.js"></script>{% endblock %}
+
 {% endblock %}
+

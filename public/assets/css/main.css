@@ -1,0 +1,193 @@
+* {
+    box-sizing: border-box;
+}
+
+body {
+    background-color:rgb(192, 57, 43);
+    color: white;
+    width: 100%;
+    margin: 0;
+}
+header {
+    width: 100%;
+    position: -webkit-sticky;
+    position: sticky;
+    top: 0;
+    font-size: 2.5rem;
+    font-weight: bold;
+    text-align: center;
+    background-color:rgb(192, 57, 43);
+}
+main {
+    padding-top: 2%;
+}
+
+h1, h2 {
+    width: 100%;
+    padding: 0.5rem;
+    text-align: center;
+    transition: transform .2s ease-in-out;
+}
+h1:hover, h2:hover {
+    transform: scale(1.2);
+}
+
+
+ul, li {
+    list-style-type: none;
+    text-decoration: none;
+    margin: 0;
+    padding: 0;
+}
+
+#about-me-section{
+    width: 100%;
+    display: none;
+    flex-flow: row wrap;
+    align-items: center;
+    background-color: white;
+    color: black;
+}
+
+#presentation{
+    padding: 2%;
+    width: 50%;
+}
+
+#hello-world {
+    width: 50%;
+}
+
+.skills-section{
+    width: 100%;
+    display: none;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    background-color:rgb(192, 57, 43);
+    color: white;
+}
+
+.column {
+    width: 33%;
+    display: none;
+    flex-flow: column;
+    border-radius: 20px;
+    background-color: white;
+}
+
+.column h3 {
+    width: 100%;
+    text-align: center;
+    color:black;
+}
+.skills-list {
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    width: 100%;
+    height: 40vh;
+    padding: 1%;
+    color: black;
+    overflow-y: scroll;
+}
+.skill {
+    width: 40%;
+    margin: 0 5%;
+    text-align: left;
+}
+
+.skill-illustration {
+    width: 30%;
+    height: auto;
+}
+
+.skill-illustration img {
+    width: 100%;
+}
+#soft-skills-list {
+    width: 40%;
+    padding:2%;
+    display: none;
+    flex-flow: column wrap;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+}
+#soft-skills-illustrations {
+    width: 40%;
+    padding: 1%;
+    display: none;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    background-color: white;
+    overflow-y: scroll;
+}
+
+#maintenance {
+    display: none;
+    width: 100%;
+    justify-content: center;
+    text-align: center;
+    padding: 1em;
+}
+
+#career-path-section, #educational-path-section {
+    width: 100%;
+    display: none;
+    flex-flow: column;
+}
+
+#career-path-section li, #educational-path-section li {
+    width: 96%;
+    padding: 2%;
+    margin: 2%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+}
+
+.career-logos {
+    width: 20%;
+    margin:2.5%;
+}
+
+.career-info { 
+    width: 70%;
+}
+
+.career-info h2 {
+    margin-bottom: 1.5rem;
+}
+
+.contact-section {
+    width: 100%;
+}
+
+#social-medias {
+    width: 100%;
+    padding:1%;
+    display: flex;
+    flex-flow: row wrap;
+    justify-content: space-evenly;
+    border-radius: 20px;
+    background-color: white;
+    color: black;
+}
+
+.social-media {
+    width: 2rem;
+}
+
+#gcontact {
+    width: 100%;
+    text-align: center;
+    font-size: 1.5rem;
+    color: rgb(192, 57, 43);
+    background-color: white;
+    border-radius: 20px;
+    padding: 1rem;
+}
